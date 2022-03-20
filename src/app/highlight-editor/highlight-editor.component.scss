@@ -1,0 +1,73 @@
+.highlight-editor {
+  position: relative;
+
+  ::ng-deep [contenteditable="true"]:empty:before {
+    content: attr(placeholder);
+    // display: block; // for firefox
+    color: #868e96;
+    opacity: 1;
+  }
+
+  .highlight-editor-wrapper {
+    position: relative;
+
+    .highlight-editor-textarea {
+      padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+      //   outline: none;
+      resize: auto;
+      background-color: transparent;
+      overflow-x: hidden;
+      overflow-y: auto;
+      // z-index: 2;
+      position: relative;
+      // pointer-events: none;
+      &:focus,
+      &.focus {
+        outline: 0;
+      }
+
+      ::ng-deep blockquote {
+        margin-left: 1rem;
+        border-left: 0.2em solid #dfe2e5;
+        padding-left: 0.5rem;
+      }
+    }
+
+    ::ng-deep p {
+      margin-bottom: 0;
+    }
+
+    .highlight-editor-placeholder {
+      display: none;
+      position: absolute;
+      top: 0;
+      padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+
+      // z-index: 1;
+      color: #6c757d;
+      opacity: 0.75;
+    }
+
+    &.show-placeholder {
+      .highlight-editor-placeholder {
+        display: block;
+      }
+    }
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+// ::ng-deep.mat-form-field-disabled .mat-form-field-underline {
+//   background-image: linear-gradient(
+//     to right,
+//     rgba(0, 0, 0, 1) 0,
+//     rgba(0, 0, 0, 0.42) 33%,
+//     #c2c7cc 0
+//   ) !important;
+//   background-size: 1px 100% !important;
+//   background-repeat: repeat-x !important;
+// }

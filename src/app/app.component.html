@@ -1,0 +1,16 @@
+<form [formGroup]="form" style="display: flex;">
+  <mat-form-field style="width: 50%;" appearance="fill">
+    <mat-label> test</mat-label>
+    <app-highlight-editor
+      matInput
+      formControlName="test"
+      (data)="print($event)"
+      (blur)="text($event)"
+      [required]="true"
+    ></app-highlight-editor>
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="margin-left: 1rem;">
+    <mat-label>Leave a comment</mat-label>
+    <textarea [disabled]="true" matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+</form>

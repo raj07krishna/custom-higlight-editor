@@ -1,0 +1,34 @@
+<div
+  class="highlight-editor"
+  #highlightEditor
+  [style.width]="properties.width"
+  [style.minWidth]="properties.minWidth"
+>
+  <div class="highlight-editor-wrapper" #editorWrapper>
+    <div
+      #editor
+      class="highlight-editor-textarea"
+      [id]="id"
+      [attr.contenteditable]="properties.editable && !disabled"
+      [attr.tabindex]="disabled ? -1 : tabIndex"
+      [attr.spellcheck]="properties.spellcheck"
+      [style.height]="properties.height"
+      [style.minHeight]="properties.minHeight"
+      [style.maxHeight]="properties.maxHeight"
+      [style.outline]="properties.outline === false ? 'none' : undefined"
+      (input)="onContentChange()"
+      (focus)="onTextAreaFocus($event)"
+      (blur)="onTextAreaBlur($event)"
+      (click)="onClick($event)"
+      (keyup.Space)="isBackspace = false; triggerStartProcessing()"
+      (keyup.Backspace)="isBackspace = true; triggerStartProcessing()"
+      (paste)="onPaste($event)"
+      [ngStyle]="{ opacity: disabled ? 0.5 : 1 }"
+    >
+      <ng-container #viewcontainer></ng-container>
+    </div>
+    <span *ngIf="!disabled" #placeholder class="highlight-editor-placeholder">{{
+      properties["placeholder"]
+    }}</span>
+  </div>
+</div>
